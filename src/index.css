@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+  font-weight: 100;
+  background: transparent;
+}
+body,
+html {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding-top: 1rem;
+  background: linear-gradient(-45deg, #0f0f0f, #1a1a1a, #222, #0f0f0f);
+  background-size: 400% 400%;
+  animation: gradient 20s ease infinite;
+  overflow-x: hidden;
+}
+
+/* Animação do gradiente */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
