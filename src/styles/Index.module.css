@@ -253,6 +253,10 @@ input.error {
 
 /* Responsivo */
 @media (min-width: 768px) {
+    .logoPreview{
+        width: 100px;
+        height: 100px;
+    }
   .container {
     max-width: 600px;
     padding: 3rem;
