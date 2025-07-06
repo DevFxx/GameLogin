@@ -75,7 +75,7 @@ function Index() {
         break;
 
       case "email":
-       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!value) {
           newErrors.email = "E-mail é obrigatório";
         } else if (!emailRegex.test(value)) {
@@ -144,14 +144,14 @@ function Index() {
       const BOT_TOKEN = "SEU_BOT_TOKEN";
       const CHAT_ID = "SEU_CHAT_ID";
 
-   let teamInfo = "";
-if (formData.teamOption === "join") {
-  teamInfo = `🔵 Entrar em time existente\n🏆 Nome do time: ${formData.existingTeamName}`;
-} else {
-  teamInfo = `🟢 Criar novo time\n🏆 Nome do time: ${formData.newTeamName}`;
-}
+      let teamInfo = "";
+      if (formData.teamOption === "join") {
+        teamInfo = `🔵 Entrar em time existente\n🏆 Nome do time: ${formData.existingTeamName}`;
+      } else {
+        teamInfo = `🟢 Criar novo time\n🏆 Nome do time: ${formData.newTeamName}`;
+      }
 
-   const messageText = `
+      const messageText = `
 🚀 Novo cadastro DGCBot:
 👤 Nome: ${formData.fullName}
 🎮 Nick: ${formData.nick}
@@ -161,9 +161,8 @@ if (formData.teamOption === "join") {
 ${teamInfo}
 `;
 
-
       try {
-        await fetch(https://api.telegram.org/bot${BOT_TOKEN}/sendMessage, {
+        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ chat_id: CHAT_ID, text: messageText }),
@@ -178,11 +177,11 @@ ${teamInfo}
         formDataToSend.append("document", formData.teamLogo);
         formDataToSend.append(
           "caption",
-          Logo do time: ${formData.newTeamName}
+          `Logo do time: ${formData.newTeamName}`
         );
 
         try {
-          await fetch(https://api.telegram.org/bot${BOT_TOKEN}/sendDocument, {
+          await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`, {
             method: "POST",
             body: formDataToSend,
           });
@@ -240,9 +239,7 @@ ${teamInfo}
               name="fullName"
               value={formData.fullName}
               onChange={handleChange}
-              className={${styles.input} ${
-                errors.fullName ? styles.error : ""
-              }}
+              className={`${styles.input} ${errors.fullName ? styles.error : ""}`}
             />
             {errors.fullName && (
               <span className={styles.errorMessage}>{errors.fullName}</span>
@@ -259,7 +256,7 @@ ${teamInfo}
               name="nick"
               value={formData.nick}
               onChange={handleChange}
-              className={${styles.input} ${errors.nick ? styles.error : ""}}
+              className={`${styles.input} ${errors.nick ? styles.error : ""}`}
             />
             {errors.nick && (
               <span className={styles.errorMessage}>{errors.nick}</span>
@@ -276,7 +273,7 @@ ${teamInfo}
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className={${styles.input} ${errors.email ? styles.error : ""}}
+              className={`${styles.input} ${errors.email ? styles.error : ""}`}
             />
             {errors.email && (
               <span className={styles.errorMessage}>{errors.email}</span>
@@ -293,9 +290,7 @@ ${teamInfo}
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className={${styles.input} ${
-                errors.password ? styles.error : ""
-              }}
+              className={`${styles.input} ${errors.password ? styles.error : ""}`}
             />
             {errors.password && (
               <span className={styles.errorMessage}>{errors.password}</span>
@@ -312,9 +307,7 @@ ${teamInfo}
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
-              className={${styles.input} ${
-                errors.confirmPassword ? styles.error : ""
-              }}
+              className={`${styles.input} ${errors.confirmPassword ? styles.error : ""}`}
             />
             {errors.confirmPassword && (
               <span className={styles.errorMessage}>
@@ -339,7 +332,6 @@ ${teamInfo}
                 />
               </div>
               <div className={styles.inputs}>
-                {" "}
                 <label className={styles.radioLabel}>Criar um novo time</label>
                 <input
                   type="radio"
@@ -363,9 +355,9 @@ ${teamInfo}
                 name="existingTeamName"
                 value={formData.existingTeamName}
                 onChange={handleChange}
-                className={${styles.input} ${
+                className={`${styles.input} ${
                   errors.existingTeamName ? styles.error : ""
-                }}
+                }`}
               />
               {errors.existingTeamName && (
                 <span className={styles.errorMessage}>
@@ -387,9 +379,9 @@ ${teamInfo}
                   name="newTeamName"
                   value={formData.newTeamName}
                   onChange={handleChange}
-                  className={${styles.input} ${
+                  className={`${styles.input} ${
                     errors.newTeamName ? styles.error : ""
-                  }}
+                  }`}
                 />
                 {errors.newTeamName && (
                   <span className={styles.errorMessage}>
