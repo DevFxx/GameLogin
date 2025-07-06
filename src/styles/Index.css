@@ -1,0 +1,158 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(rgb(5, 5, 90), rgb(255, 0, 200));
+  overflow-x: hidden;
+
+  /* Scrollbar Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #555 #1e1e1e;
+}
+
+/* Scrollbar Chrome, Edge, Safari */
+body::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+body::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 4px;
+  border: 1px solid #333;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #777;
+}
+
+.textHero {
+  text-align: center;
+  color: white;
+  text-shadow: 0 0 10px black;
+  box-shadow: 0 0 10px black;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  max-width: 90%;
+  width: 500px;
+  margin: 1rem auto 0;
+}
+
+.textHero span {
+  color: crimson;
+  text-shadow: 0 0 10px rgb(83, 20, 20);
+}
+
+.text {
+  user-select: none;
+  text-align: center;
+  color: greenyellow;
+  background-color: rgba(0, 0, 0, 0.2);
+  max-width: 90%;
+  width: 300px;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  margin: 2rem auto 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem auto 1rem;
+  max-width: 90%;
+  width: 300px;
+  box-shadow: 0 0 10px black;
+  padding: 1rem;
+  border-radius: 0.4rem;
+}
+
+.grupForm {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.grupForm input {
+  border-radius: 0.2rem;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.grupForm input::placeholder {
+  text-align: center;
+}
+
+.endForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.endForm button {
+  border: none;
+  padding: 0.5rem 1rem;
+  letter-spacing: 2px;
+  background-color: black;
+  color: white;
+  border-radius: 0.2rem;
+  user-select: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.endForm button:hover {
+  transform: scale(1.05) translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
+}
+
+.accont {
+  text-align: center;
+  text-decoration: underline;
+  user-select: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.accont:hover {
+  color: white;
+}
+.footer {
+  color: white;
+  text-shadow: 0 0 10px black;
+  text-align: center;
+  letter-spacing: 3px;
+  user-select: none;
+}
+
+@media (max-width: 535px) {
+  .textHero {
+    font-size: 1.5rem;
+  }
+  .textHero span {
+    font-size: 1.4rem;
+  }
+}
+@media (max-width: 400px) {
+  .textHero {
+    font-size: 1rem;
+  }
+  .text {
+    font-size: 0.9rem;
+  }
+  .endForm button {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
