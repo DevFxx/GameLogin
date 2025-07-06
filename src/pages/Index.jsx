@@ -144,12 +144,12 @@ function Index() {
       const BOT_TOKEN = "SEU_BOT_TOKEN";
       const CHAT_ID = "SEU_CHAT_ID";
 
-      let teamInfo = "";
-      if (formData.teamOption === "join") {
-        teamInfo = 🔵 Entrar em time existente\\n🏆 Nome do time: ${formData.existingTeamName};
-      } else {
-        teamInfo = 🟢 Criar novo time\\n🏆 Nome do time: ${formData.newTeamName};
-      }
+   let teamInfo = "";
+if (formData.teamOption === "join") {
+  teamInfo = `🔵 Entrar em time existente\n🏆 Nome do time: ${formData.existingTeamName}`;
+} else {
+  teamInfo = `🟢 Criar novo time\n🏆 Nome do time: ${formData.newTeamName}`;
+}
 
       const messageText = 
 🚀 Novo cadastro DGCBot:
