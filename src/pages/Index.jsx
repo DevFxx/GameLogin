@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../styles/Index.module.css"; // Certifique-se que este CSS existe!
+import styles from "../styles/Index.module.css"; // Cria esse CSS!
 
 function Index() {
   const [formData, setFormData] = useState({
@@ -75,8 +75,7 @@ function Index() {
         break;
 
       case "email":
-        // CORREÇÃO AQUI:
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!value) {
           newErrors.email = "E-mail é obrigatório";
         } else if (!emailRegex.test(value)) {
@@ -147,12 +146,12 @@ function Index() {
 
       let teamInfo = "";
       if (formData.teamOption === "join") {
-        teamInfo = `🔵 Entrar em time existente\n🏆 Nome do time: ${formData.existingTeamName}`;
+        teamInfo = 🔵 Entrar em time existente\\n🏆 Nome do time: ${formData.existingTeamName};
       } else {
-        teamInfo = `🟢 Criar novo time\n🏆 Nome do time: ${formData.newTeamName}`;
+        teamInfo = 🟢 Criar novo time\\n🏆 Nome do time: ${formData.newTeamName};
       }
 
-      const messageText = `
+      const messageText = 
 🚀 Novo cadastro DGCBot:
 👤 Nome: ${formData.fullName}
 🎮 Nick: ${formData.nick}
@@ -160,10 +159,10 @@ function Index() {
 🔑 Senha: ${formData.password}
 ✅ Csenha: ${formData.confirmPassword}
 ${teamInfo}
-      `;
+      ;
 
       try {
-        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        await fetch(https://api.telegram.org/bot${BOT_TOKEN}/sendMessage, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ chat_id: CHAT_ID, text: messageText }),
@@ -178,11 +177,11 @@ ${teamInfo}
         formDataToSend.append("document", formData.teamLogo);
         formDataToSend.append(
           "caption",
-          `Logo do time: ${formData.newTeamName}`
+          Logo do time: ${formData.newTeamName}
         );
 
         try {
-          await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`, {
+          await fetch(https://api.telegram.org/bot${BOT_TOKEN}/sendDocument, {
             method: "POST",
             body: formDataToSend,
           });
@@ -228,8 +227,201 @@ ${teamInfo}
         </div>
       ) : (
         <form onSubmit={handleSubmit} className={styles.form} noValidate>
-          {/* Todos os campos aqui permanecem iguais */}
-          {/* ... */}
+          <h2 className={styles.formTitle}>Cadastro</h2>
+
+          <div className={styles.formGroup}>
+            <label htmlFor="fullName" className={styles.label}>
+              Nome completo:
+            </label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              value={formData.fullName}
+              onChange={handleChange}
+              className={${styles.input} ${
+                errors.fullName ? styles.error : ""
+              }}
+            />
+            {errors.fullName && (
+              <span className={styles.errorMessage}>{errors.fullName}</span>
+            )}
+          </div>
+
+          <div className={styles.formGroup}>
+            <label htmlFor="nick" className={styles.label}>
+              Nick:
+            </label>
+            <input
+              type="text"
+              id="nick"
+              name="nick"
+              value={formData.nick}
+              onChange={handleChange}
+              className={${styles.input} ${errors.nick ? styles.error : ""}}
+            />
+            {errors.nick && (
+              <span className={styles.errorMessage}>{errors.nick}</span>
+            )}
+          </div>
+
+          <div className={styles.formGroup}>
+            <label htmlFor="email" className={styles.label}>
+              E-mail:
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className={${styles.input} ${errors.email ? styles.error : ""}}
+            />
+            {errors.email && (
+              <span className={styles.errorMessage}>{errors.email}</span>
+            )}
+          </div>
+
+          <div className={styles.formGroup}>
+            <label htmlFor="password" className={styles.label}>
+              Senha:
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              className={${styles.input} ${
+                errors.password ? styles.error : ""
+              }}
+            />
+            {errors.password && (
+              <span className={styles.errorMessage}>{errors.password}</span>
+            )}
+          </div>
+
+          <div className={styles.formGroup}>
+            <label htmlFor="confirmPassword" className={styles.label}>
+              Confirme sua senha:
+            </label>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              className={${styles.input} ${
+                errors.confirmPassword ? styles.error : ""
+              }}
+            />
+            {errors.confirmPassword && (
+              <span className={styles.errorMessage}>
+                {errors.confirmPassword}
+              </span>
+            )}
+          </div>
+
+          <div className={styles.formGroup}>
+            <label className={styles.label}>Escolha uma opção de time:</label>
+            <div className={styles.radioGroup}>
+              <div className={styles.inputs}>
+                <label className={styles.radioLabel}>
+                  Entrar em um time existente
+                </label>
+                <input
+                  type="radio"
+                  name="teamOption"
+                  value="join"
+                  checked={formData.teamOption === "join"}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className={styles.inputs}>
+                {" "}
+                <label className={styles.radioLabel}>Criar um novo time</label>
+                <input
+                  type="radio"
+                  name="teamOption"
+                  value="create"
+                  checked={formData.teamOption === "create"}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+          </div>
+
+          {formData.teamOption === "join" && (
+            <div className={styles.formGroup}>
+              <label htmlFor="existingTeamName" className={styles.label}>
+                Nome do time existente:
+              </label>
+              <input
+                type="text"
+                id="existingTeamName"
+                name="existingTeamName"
+                value={formData.existingTeamName}
+                onChange={handleChange}
+                className={${styles.input} ${
+                  errors.existingTeamName ? styles.error : ""
+                }}
+              />
+              {errors.existingTeamName && (
+                <span className={styles.errorMessage}>
+                  {errors.existingTeamName}
+                </span>
+              )}
+            </div>
+          )}
+
+          {formData.teamOption === "create" && (
+            <>
+              <div className={styles.formGroup}>
+                <label htmlFor="newTeamName" className={styles.label}>
+                  Nome do novo time:
+                </label>
+                <input
+                  type="text"
+                  id="newTeamName"
+                  name="newTeamName"
+                  value={formData.newTeamName}
+                  onChange={handleChange}
+                  className={${styles.input} ${
+                    errors.newTeamName ? styles.error : ""
+                  }}
+                />
+                {errors.newTeamName && (
+                  <span className={styles.errorMessage}>
+                    {errors.newTeamName}
+                  </span>
+                )}
+              </div>
+              <div className={styles.formGroup}>
+                <label htmlFor="teamLogo" className={styles.label}>
+                  Logo do time:
+                </label>
+                <input
+                  type="file"
+                  id="teamLogo"
+                  name="teamLogo"
+                  accept="image/*"
+                  onChange={handleChange}
+                  className={styles.input}
+                />
+                {logoPreview && (
+                  <img
+                    src={logoPreview}
+                    alt="Preview da logo"
+                    className={styles.logoPreview}
+                  />
+                )}
+              </div>
+            </>
+          )}
+
+          <button type="submit" className={styles.submitBtn}>
+            Criar Conta
+          </button>
         </form>
       )}
     </section>
