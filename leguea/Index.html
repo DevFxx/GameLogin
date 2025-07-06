@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LOP</title>
+    <link rel="stylesheet" href="src/styles/Index.css" />
+  </head>
+  <body>
+    <h1 class="textHero">
+      Mostre as suas habilidades no<br /><span>League of professionals</span>
+    </h1>
+    <p class="text">Se escreva aqui em baixo</p>
+    <form action="" class="form">
+      <article class="grupForm">
+        <label for="name" id="name">Nome completo</label>
+        <input
+          type="text"
+          placeholder="Nome completo"
+          id="nameI"
+          required
+          autocomplete="off"
+        />
+      </article>
+      <article class="grupForm">
+        <label for="email" id="email">E-mail</label>
+        <input
+          type="email"
+          placeholder="exemple@gmail.com"
+          id="emailI"
+          required
+          autocomplete="email"
+        />
+      </article>
+      <article class="grupForm">
+        <label for="password" id="password">Senha</label>
+        <input
+          type="password"
+          placeholder="Senha1234"
+          id="passwordI"
+          required
+          autocomplete="no"
+          minlength="8"
+          maxlength="16"
+          oninput="verificarSenhas()"
+        />
+      </article>
+      <article class="grupForm">
+        <label for="Cpassword" id="Cpassword">Confirmar senha</label>
+        <input
+          type="password"
+          placeholder="Digite a senha novamente"
+          id="CpasswordI"
+          required
+          autocomplete="no"
+          minlength="8"
+          maxlength="16"
+          oninput="verificarSenhas()"
+        />
+        <p
+          id="msgSenha"
+          style="
+            font-size: 1rem;
+            color: darkred;
+            display: none;
+            text-align: center;
+          "
+        ></p>
+      </article>
+      <article class="grupForm">
+        <label for="date" id="date">Sua data de nascimento</label>
+        <input type="date" id="dateI" required autocomplete="off" />
+      </article>
+      <article class="grupForm">
+        <label for="nick" id="nick">Qual seu nick?</label>
+        <input
+          type="text"
+          id="nickI"
+          required
+          autocomplete="off"
+          minlength="3"
+          placeholder="Nick"
+        />
+      </article>
+      <article class="endForm">
+        <button type="submit" id="button" disabled>Cadastrar</button>
+        <p class="accont"><a href="./src/pages/Login.html">Já tem conta?</a></p>
+      </article>
+    </form>
+    <footer class="footer">2025 LOP. Todos os direitos reservados.</footer>
+    <script src="./src/js/Index.js"></script>
+  </body>
+</html>
